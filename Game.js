@@ -16,7 +16,7 @@ useEffect(() => {
 	let won = true;
 	for (let i = 0; i < shuffledArray.length - 1; i++) {
 	const value = shuffledArray[i];
-	if (i == value - 1) continue;
+	if (i === value - 1) continue;
 	else {
 		won = false;
 		break;
@@ -27,7 +27,7 @@ useEffect(() => {
 	setTimerActive(false);
 	}
 	return;
-}, [moves]);
+}, [moves, shuffledArray]);
 
 const newGame = () => {
 	setMoves(0);
@@ -47,7 +47,7 @@ const dropped = (e) => {
 	const oldPlace = Number(document.getElementById(tile).parentElement.id.slice(6)) - 1;
 	const newPlace = Number(e.target.id.slice(6)) - 1;
 
-	if (!(Math.abs(oldPlace - newPlace) == 4 || Math.abs(oldPlace - newPlace) == 1)) return;
+	if (!(Math.abs(oldPlace - newPlace) === 4 || Math.abs(oldPlace - newPlace) === 1)) return;
 
 	const [i, j] = [Math.min(oldPlace, newPlace), Math.max(oldPlace, newPlace)];
 	setShuffledArray([
@@ -73,7 +73,6 @@ return (
 		</div>
 		)}
 		<h1 className="text-3xl text-emerald-600 font-bold text-center">
-		GeeksforGeeks
 		</h1>
 		<h3 className="text-xl font-bold text-center bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 from-10% via-sky-500 via-30% to-emerald-500 to-90%">
 		15 Puzzle Game
